@@ -1,9 +1,8 @@
 package ru.itgirl.jdbcspringexample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.itgirl.jdbcspringexample.model.Book;
-import ru.itgirl.jdbcspringexample.repository.BookRepository;
 
 import java.util.List;
 
@@ -20,5 +19,16 @@ public class BookController {
     @GetMapping("/book/all")
     public List<Book> getAllBooks() {
         return bookRepository.findAllBooks();
+    }
+
+    @GetMapping("/book/id")
+    public Book findBook(@RequestParam(value = "id", defaultValue = "World") int id) {
+        Book searchedBook = new Book();
+        for (Book book : bookRepository.findAllBooks()) {
+            if (book.getId() == id) {
+                searchedBook = book;
+            }
+        }
+        return searchedBook;
     }
 }

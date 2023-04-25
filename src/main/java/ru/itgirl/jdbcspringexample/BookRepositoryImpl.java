@@ -2,7 +2,6 @@ package ru.itgirl.jdbcspringexample;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.itgirl.jdbcspringexample.model.Book;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
